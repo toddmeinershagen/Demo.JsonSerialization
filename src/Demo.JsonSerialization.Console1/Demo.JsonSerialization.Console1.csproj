@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Type1\Address.cs" />
-    <Compile Include="ConcreteTypeConverter.cs" />
     <Compile Include="Type1\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
