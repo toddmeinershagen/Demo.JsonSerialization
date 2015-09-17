@@ -46,11 +46,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Type1\Address.cs" />
+    <Compile Include="Type1\ConcreteTypeConverter.cs" />
     <Compile Include="Type1\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Type2\Address.cs" />
     <Compile Include="Type2\Person.cs" />
+    <Compile Include="Type3\Address.cs" />
+    <Compile Include="Type3\ConcreteTypeConverter.cs" />
+    <Compile Include="Type3\Person.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
