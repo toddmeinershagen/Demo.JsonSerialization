@@ -10,13 +10,14 @@ namespace Demo.JsonSerialization.Console1.Type2
         { }
 
         [JsonConstructor]
-        public Person(Address address)
+        private Person(Address address)
         {
             Address = address;
         }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
         public IAddress Address { get; set; }
     }
 }
