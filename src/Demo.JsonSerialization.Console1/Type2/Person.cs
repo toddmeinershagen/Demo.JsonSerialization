@@ -6,11 +6,10 @@ namespace Demo.JsonSerialization.Console1.Type2
 {
     public class Person : IPerson
     {
-        public Person()
+        private Person()
         { }
 
-        [JsonConstructor]
-        private Person(Address address)
+        public Person(Address address)
         {
             Address = address;
         }

@@ -21,18 +21,12 @@ namespace Demo.JsonSerialization.Console1
 
             var json = JsonConvert.SerializeObject(person, Formatting.Indented);
             
-            TestSerializerSettingsMethod(json);
             TestConstructorMethod(json);
             TestPropertyMethod(json);
+            TestSerializerSettingsMethod(json);
+            TestSerializerSettingsOverrideMethod(json);
 
             Console.ReadLine();
-        }
-
-        private static void TestPropertyMethod(string json)
-        {
-            var type3Person = JsonConvert.DeserializeObject<Type3.Person>(json);
-            Debug.Assert(type3Person.Address is Type3.Address);
-            Console.WriteLine("Property Method - Worked");
         }
 
         private static void TestConstructorMethod(string json)
@@ -42,6 +36,13 @@ namespace Demo.JsonSerialization.Console1
             Console.WriteLine("Constructor Method - Worked!");
         }
 
+        private static void TestPropertyMethod(string json)
+        {
+            var type3Person = JsonConvert.DeserializeObject<Type3.Person>(json);
+            Debug.Assert(type3Person.Address is Type3.Address);
+            Console.WriteLine("Property Method - Worked");
+        }
+
         private static void TestSerializerSettingsMethod(string json)
         {
             var settings = new JsonSerializerSettings();
@@ -49,6 +50,16 @@ namespace Demo.JsonSerialization.Console1
             var type1Person = JsonConvert.DeserializeObject<Type1.Person>(json, settings);
             Debug.Assert(type1Person.Address is Type1.Address);
             Console.WriteLine("Serializer Settings Method - Worked!");
+        }
+
+        private static void TestSerializerSettingsOverrideMethod(string json)
+        {
+            var settings = new JsonSerializerSettings();
+            settings.Converters.Add(new Type1.ConcreteTypeConverter<IAddress, Type1.Address>());
+            settings.ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor;
+            var type2Person = JsonConvert.DeserializeObject<Type2.Person>(json, settings);
+            Debug.Assert(type2Person.Address is Type1.Address);
+            Console.WriteLine("Serializer Settings Override Method - Worked!");
         }
     }
 }
